@@ -5,6 +5,8 @@ import { createShortLink, selectLoading } from '../store/slice/linkSlice';
 
 import { Panel, Div, Button, Group } from '@vkontakte/vkui';
 
+import ShortLinks from './ShortLinks';
+
 const Form = () => {
 	// Создаём диспетчер для взаимодействия с redux
 	const dispatch = useDispatch();
@@ -70,6 +72,7 @@ const Form = () => {
 					{errors.url && <Div>{errors.url.message}</Div>}
 				</Group>
 			</Div>
+			<ShortLinks />
 		</Panel>
 	);
 };
