@@ -25,23 +25,21 @@ const rootReducer = combineReducers({ links: linkReducer });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-	reducer: {
-		links: linkReducer,
-		// Надстройка для избежания ошибок со стороны toolkit
-		middleware: (getDefaultMiddleware) =>
-			getDefaultMiddleware({
-				serializableCheck: {
-					ignoredActions: [
-						FLUSH,
-						REHYDRATE,
-						PAUSE,
-						PERSIST,
-						PURGE,
-						REGISTER,
-					],
-				},
-			}),
-	},
+	reducer: persistedReducer,
+	// Надстройка для избежания ошибок со стороны toolkit
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			serializableCheck: {
+				ignoredActions: [
+					FLUSH,
+					REHYDRATE,
+					PAUSE,
+					PERSIST,
+					PURGE,
+					REGISTER,
+				],
+			},
+		}),
 });
 
 // persistor — промежуточная оболочка для того, чтобы
