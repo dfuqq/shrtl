@@ -28,7 +28,9 @@ const ShortLinks = () => {
 									</Button>
 								</Div>
 							}>
-							<Link href={item.full_short_link2}>
+							<Link
+								href={item.full_short_link2}
+								target='_blank'>
 								{item.full_short_link2}
 							</Link>
 						</Cell>
