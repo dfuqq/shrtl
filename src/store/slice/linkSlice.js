@@ -49,4 +49,10 @@ const linkSlice = createSlice({
 	},
 });
 
+// Получение статуса загрузки
+export const selectLoading = (state) => state.links.loading;
+
+// Получение ссылок
+export const selectLinks = (state) => state.links.items;
+
 export default linkSlice.reducer;
