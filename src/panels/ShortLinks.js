@@ -14,8 +14,12 @@ const ShortLinks = () => {
 			<Div>
 				{links.map((item) => (
 					<Div key={item.code}>
-						<SimpleCell>{item.original_link}</SimpleCell>
-						<SimpleCell>{item.full_short_link2}</SimpleCell>
+						<SimpleCell
+							indicator={item.full_short_link2}
+							disabled>
+							{item.original_link}
+						</SimpleCell>
+
 						<Button size='m'>Скопировать</Button>
 					</Div>
 				))}
