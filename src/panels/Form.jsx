@@ -1,9 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { createShortLink } from '../store/slice/linkSlice';
 
 import { Panel, Div, Button, Group } from '@vkontakte/vkui';
 
 const Form = () => {
+	// Создаём диспетчер для взаимодействия с redux
+	const dispatch = useDispatch();
+
 	const {
 		register,
 		formState: { errors },
@@ -11,8 +16,11 @@ const Form = () => {
 		// reset,
 	} = useForm({ mode: 'onSubmit' });
 
-	const onSubmit = (data) => {
-		console.log(data);
+	// При отправке формы берём инпут url
+	// и с помощью диспетчера вызываем асинхронный метод
+	// и передаём введённый url
+	const onSubmit = ({ url }) => {
+		dispatch(createShortLink(url));
 	};
 
 	return (
@@ -27,11 +35,11 @@ const Form = () => {
 							placeholder='Введите ссылку'
 							{...register('url', {
 								required: 'Пожалуйста, введите ссылку',
-								pattern: {
-									value: /(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g,
-									message:
-										'Пожалуйста, введите корректную ссылку',
-								},
+								// pattern: {
+								// 	value: /(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g,
+								// 	message:
+								// 		'Пожалуйста, введите корректную ссылку',
+								// },
 							})}
 						/>
 					</form>
