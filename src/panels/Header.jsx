@@ -4,7 +4,7 @@ import { Panel, PanelHeader } from '@vkontakte/vkui';
 
 const Header = () => (
 	<Panel>
-		<PanelHeader>shrtl</PanelHeader>
+		<PanelHeader fixed>shrtl</PanelHeader>
 	</Panel>
 );
 

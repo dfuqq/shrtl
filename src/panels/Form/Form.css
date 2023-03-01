@@ -1,0 +1,18 @@
+.Input {
+	margin: 0;
+	width: 100%;
+	display: block;
+	box-sizing: border-box;
+	box-shadow: none;
+	border: none;
+	appearance: none;
+	text-overflow: ellipsis;
+	height: 42px;
+	line-height: 20px;
+	font-size: 16px;
+	color: var(--text_primary);
+	padding: 11px;
+	position: relative;
+	z-index: 2;
+	background: transparent;
+}

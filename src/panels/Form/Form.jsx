@@ -5,7 +5,8 @@ import { createShortLink, selectLoading } from '../../store/slice/linkSlice';
 
 import { Panel, Div, Button, Group } from '@vkontakte/vkui';
 
-import ShortLinks from '../ShortLinks';
+import ShortLinks from '../ShortLinks/ShortLinks';
+import './Form.css';
 
 const Form = () => {
 	// Создаём диспетчер для взаимодействия с redux
@@ -39,6 +40,7 @@ const Form = () => {
 						<input
 							type='url'
 							placeholder='Введите ссылку'
+							className='Input'
 							{...register('url', {
 								required: 'Пожалуйста, введите ссылку',
 								// pattern: {
