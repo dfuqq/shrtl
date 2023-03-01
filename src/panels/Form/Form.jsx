@@ -1,11 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { createShortLink, selectLoading } from '../store/slice/linkSlice';
+import { createShortLink, selectLoading } from '../../store/slice/linkSlice';
 
 import { Panel, Div, Button, Group } from '@vkontakte/vkui';
 
-import ShortLinks from './ShortLinks';
+import ShortLinks from '../ShortLinks';
 
 const Form = () => {
 	// Создаём диспетчер для взаимодействия с redux
