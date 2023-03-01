@@ -44,6 +44,6 @@ export const store = configureStore({
 	},
 });
 
-// persister — промежуточная оболочка для того, чтобы
+// persistor — промежуточная оболочка для того, чтобы
 // использовать дополнительный провайдер
-export const persister = persistStore(store);
+export const persistor = persistStore(store);
