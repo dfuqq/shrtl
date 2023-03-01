@@ -2,8 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectLinks } from '../../store/slice/linkSlice';
 
-import { Panel, Div, Cell, Button, Link } from '@vkontakte/vkui';
-import { Icon12View } from '@vkontakte/icons';
+import { Panel, Div, Cell, Button, Link, Text } from '@vkontakte/vkui';
 import './ShortLinks.css';
 
 const ShortLinks = () => {
@@ -17,7 +16,13 @@ const ShortLinks = () => {
 				{links.map((item) => (
 					<Div key={item.code}>
 						<Cell
-							description='24 перехода'
+							description={
+								<Text>
+									24 перехода
+									<br />
+									Действует до:
+								</Text>
+							}
 							indicator={item.original_link}
 							disabled
 							className='Cell'
