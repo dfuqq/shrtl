@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import { createShortLink } from '../store/slice/linkSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { createShortLink, selectLoading } from '../store/slice/linkSlice';
 
 import { Panel, Div, Button, Group } from '@vkontakte/vkui';
 
@@ -9,11 +9,14 @@ const Form = () => {
 	// Создаём диспетчер для взаимодействия с redux
 	const dispatch = useDispatch();
 
+	// Получаем статус выполнения запроса
+	const loading = useSelector(selectLoading);
+
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
-		// reset,
+		reset,
 	} = useForm({ mode: 'onSubmit' });
 
 	// При отправке формы берём инпут url
@@ -21,6 +24,7 @@ const Form = () => {
 	// и передаём введённый url
 	const onSubmit = ({ url }) => {
 		dispatch(createShortLink(url));
+		reset();
 	};
 
 	return (
@@ -41,6 +45,15 @@ const Form = () => {
 								// 		'Пожалуйста, введите корректную ссылку',
 								// },
 							})}
+							style={{
+								outlineColor: errors.url
+									? 'red'
+									: 'currentcolor',
+								outlineWidth: errors.url ? '4px' : '1px',
+							}}
+							// Закрываем возможность ввода
+							// во время выполнения запроса
+							disabled={loading === 'loading'}
 						/>
 					</form>
 					<Div
@@ -48,7 +61,11 @@ const Form = () => {
 							display: 'flex',
 							justifyContent: 'center',
 						}}>
-						<Button size='m'>Сократить</Button>
+						<Button
+							size='m'
+							disabled={loading === 'loading'}>
+							Сократить
+						</Button>
 					</Div>
 					{errors.url && <Div>{errors.url.message}</Div>}
 				</Group>
