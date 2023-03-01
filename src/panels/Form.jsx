@@ -1,32 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
-import { Panel, Div, FormItem, Input, Button, Group } from '@vkontakte/vkui';
+import { Panel, Div, Button, Group } from '@vkontakte/vkui';
 
 const Form = () => {
-	const [url, setUrl] = useState('');
+	const {
+		register,
+		formState: { errors },
+		handleSubmit,
+		// reset,
+	} = useForm({ mode: 'onSubmit' });
 
-	const onChange = (e) => setUrl(e.currentTarget.value);
+	const onSubmit = (data) => {
+		console.log(data);
+	};
 
 	return (
 		<Panel>
 			<Div>
 				<Group>
-					<FormItem
-						top='Ссылка'
-						status={url ? 'valid' : 'error'}
-						bottom={
-							url
-								? 'Сейчас сократим...'
-								: 'Пожалуйста, введите ссылку'
-						}>
-						<Input
+					<form
+						autoComplete='off'
+						onSubmit={handleSubmit(onSubmit)}>
+						<input
 							type='url'
 							placeholder='Введите ссылку'
-							name='url'
-							value={url}
-							onChange={onChange}
+							{...register('url', {
+								required: 'Пожалуйста, введите ссылку',
+							})}
 						/>
-					</FormItem>
+					</form>
 					<Div
 						style={{
 							display: 'flex',
@@ -34,6 +37,7 @@ const Form = () => {
 						}}>
 						<Button size='m'>Сократить</Button>
 					</Div>
+					{errors.url && <Div>{errors.url.message}</Div>}
 				</Group>
 			</Div>
 		</Panel>
