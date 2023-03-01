@@ -57,19 +57,20 @@ const Form = () => {
 							// во время выполнения запроса
 							disabled={loading === 'loading'}
 						/>
+						<Div
+							style={{
+								display: 'flex',
+								justifyContent: 'center',
+							}}>
+							<Button
+								size='m'
+								disabled={loading === 'loading'}
+								type='submit'>
+								Сократить
+							</Button>
+						</Div>
+						{errors.url && <Div>{errors.url.message}</Div>}
 					</form>
-					<Div
-						style={{
-							display: 'flex',
-							justifyContent: 'center',
-						}}>
-						<Button
-							size='m'
-							disabled={loading === 'loading'}>
-							Сократить
-						</Button>
-					</Div>
-					{errors.url && <Div>{errors.url.message}</Div>}
 				</Group>
 			</Div>
 			<ShortLinks />
