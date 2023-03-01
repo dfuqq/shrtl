@@ -33,47 +33,49 @@ const Form = () => {
 	return (
 		<Panel>
 			<Div>
-				<Group>
-					<form
-						autoComplete='off'
-						onSubmit={handleSubmit(onSubmit)}>
-						<input
-							type='url'
-							placeholder='Введите ссылку'
-							className='Input'
-							{...register('url', {
-								required: 'Пожалуйста, введите ссылку',
-								// pattern: {
-								// 	value: /(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g,
-								// 	message:
-								// 		'Пожалуйста, введите корректную ссылку',
-								// },
-							})}
-							style={{
-								outlineColor: errors.url
-									? 'red'
-									: 'currentcolor',
-								outlineWidth: errors.url ? '4px' : '1px',
-							}}
-							// Закрываем возможность ввода
-							// во время выполнения запроса
-							disabled={loading === 'loading'}
-						/>
-						<Div
-							style={{
-								display: 'flex',
-								justifyContent: 'center',
-							}}>
-							<Button
-								size='m'
+				<Div>
+					<Group>
+						<form
+							autoComplete='off'
+							onSubmit={handleSubmit(onSubmit)}>
+							<input
+								type='url'
+								placeholder='Введите ссылку'
+								className='Input'
+								{...register('url', {
+									required: 'Пожалуйста, введите ссылку',
+									// pattern: {
+									// 	value: /(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g,
+									// 	message:
+									// 		'Пожалуйста, введите корректную ссылку',
+									// },
+								})}
+								style={{
+									outlineColor: errors.url
+										? 'red'
+										: 'currentcolor',
+									outlineWidth: errors.url ? '4px' : '1px',
+								}}
+								// Закрываем возможность ввода
+								// во время выполнения запроса
 								disabled={loading === 'loading'}
-								type='submit'>
-								Сократить
-							</Button>
-						</Div>
-						{errors.url && <Div>{errors.url.message}</Div>}
-					</form>
-				</Group>
+							/>
+							<Div
+								style={{
+									display: 'flex',
+									justifyContent: 'center',
+								}}>
+								<Button
+									size='m'
+									disabled={loading === 'loading'}
+									type='submit'>
+									Сократить
+								</Button>
+							</Div>
+							{errors.url && <Div>{errors.url.message}</Div>}
+						</form>
+					</Group>
+				</Div>
 			</Div>
 			<ShortLinks />
 		</Panel>
