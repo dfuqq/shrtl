@@ -39,7 +39,11 @@ const linkSlice = createSlice({
 			if (ok) {
 				// Если всё хорошо — забираем результат для парса,
 				// продолжаем работу с сервисом
-				state.items.push(result);
+				state.items.push({
+					code: result.code,
+					original_link: result.original_link,
+					full_short_link2: result.full_short_link2,
+				});
 				state.loading = 'idle';
 			} else {
 				// Если ok = false в ответе, то прекращаем работу
