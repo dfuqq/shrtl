@@ -74,8 +74,7 @@ const linkSlice = createSlice({
 				state.items[result.itemId].counter++;
 				state.loading = 'idle';
 			} else {
-				const err = result.error;
-				console.log(err);
+				console.log(result.error);
 				state.loading = 'error';
 			}
 		},
