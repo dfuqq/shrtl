@@ -15,6 +15,17 @@ export const createShortLink = createAsyncThunk(
 	}
 );
 
+export const increaseCounterOnOpen = createAsyncThunk(
+	'links/increaseCounterOnOpen',
+	async (itemId) => {
+		try {
+			return await { done: true, result: { itemId: itemId } };
+		} catch (error) {
+			return await { done: false, result: error };
+		}
+	}
+);
+
 const initialState = {
 	items: [],
 	loading: 'idle',
@@ -48,6 +59,23 @@ const linkSlice = createSlice({
 				state.loading = 'idle';
 			} else {
 				// Если ok = false в ответе, то прекращаем работу
+				state.loading = 'error';
+			}
+		},
+		[increaseCounterOnOpen.rejected]: (state) => {
+			state.loading = 'rejected';
+		},
+		[increaseCounterOnOpen.pending]: (state) => {
+			state.loading = 'loading';
+		},
+		[increaseCounterOnOpen.fulfilled]: (state, action) => {
+			const { done, result } = action.payload;
+			if (done) {
+				state.items[result.itemId].counter++;
+				state.loading = 'idle';
+			} else {
+				const err = result.error;
+				console.log(err);
 				state.loading = 'error';
 			}
 		},

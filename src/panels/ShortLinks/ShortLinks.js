@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectLinks } from '../../store/slice/linkSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+	selectLinks,
+	increaseCounterOnOpen,
+} from '../../store/slice/linkSlice';
 
 import { Panel, Div, Cell, Button, Link, Text } from '@vkontakte/vkui';
 import './ShortLinks.css';
@@ -9,10 +12,23 @@ const ShortLinks = () => {
 	const [copiedUrl, setCopiedUrl] = useState(null);
 	const links = useSelector(selectLinks);
 
+	const dispatch = useDispatch();
+
 	const copyToClipboard = (url) => {
 		navigator.clipboard.writeText(url).then(() => {
 			setCopiedUrl(url);
 		});
+	};
+
+	const openLink = (item) => {
+		let id = 0;
+		for (let i = 0; i < links.length; i++) {
+			if (links[i].code === item.code) {
+				id = i;
+				break;
+			}
+		}
+		dispatch(increaseCounterOnOpen(id));
 	};
 
 	if (!links?.length) return null;
@@ -25,7 +41,7 @@ const ShortLinks = () => {
 						<Cell
 							description={
 								<Text>
-									24 перехода
+									{item.counter} перехода
 									<br />
 									Действует до:
 								</Text>
@@ -59,7 +75,8 @@ const ShortLinks = () => {
 							}>
 							<Link
 								href={item.full_short_link2}
-								target='_blank'>
+								target='_blank'
+								onClick={() => openLink(item)}>
 								{item.full_short_link2}
 							</Link>
 						</Cell>
