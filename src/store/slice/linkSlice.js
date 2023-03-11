@@ -31,7 +31,7 @@ const initialState = {
 	loading: 'idle',
 };
 
-// extraReducers используем для асинхронной логики
+// extraReducers используем для асинхронной логики при получении промисов
 const linkSlice = createSlice({
 	name: 'links',
 	initialState,
