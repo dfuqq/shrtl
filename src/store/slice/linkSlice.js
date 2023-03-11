@@ -19,9 +19,9 @@ export const increaseCounterOnOpen = createAsyncThunk(
 	'links/increaseCounterOnOpen',
 	async (itemId) => {
 		try {
-			return await { done: true, result: { itemId: itemId } };
+			return await { ok: true, result: { itemId: itemId } };
 		} catch (error) {
-			return await { done: false, result: error };
+			return await { ok: false, result: error };
 		}
 	}
 );
@@ -69,8 +69,8 @@ const linkSlice = createSlice({
 			state.loading = 'loading';
 		},
 		[increaseCounterOnOpen.fulfilled]: (state, action) => {
-			const { done, result } = action.payload;
-			if (done) {
+			const { ok, result } = action.payload;
+			if (ok) {
 				state.items[result.itemId].counter++;
 				state.loading = 'idle';
 			} else {
