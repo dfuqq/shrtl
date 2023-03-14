@@ -43,7 +43,7 @@ const ShortLinks = ({ go }) => {
 								<Text>
 									{item.counter} перехода
 									<br />
-									Действует до:
+									Действует до: {item.date_created}
 								</Text>
 							}
 							indicator={item.original_link}
