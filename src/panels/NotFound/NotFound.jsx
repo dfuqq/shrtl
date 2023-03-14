@@ -11,7 +11,7 @@ const NotFound = ({ go }) => {
 				background:
 					'linear-gradient(157deg, rgba(255,0,0,1) 0%, rgba(121,16,9,1) 45%, rgba(0,0,0,1) 100%)',
 			}}>
-			<Div>Hello!</Div>
+			<Div>Ссылки, по которой Вы перешли, не существует..</Div>
 			<Button
 				size='l'
 				mode='overlay_primary'
