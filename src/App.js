@@ -13,7 +13,7 @@ import Home from './panels/Home';
 import NotFound from './panels/NotFound/NotFound';
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('not_found');
+	const [activePanel, setActivePanel] = useState('home');
 
 	const go = (e) => {
 		setActivePanel(e.currentTarget.dataset.to);

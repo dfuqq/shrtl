@@ -76,10 +76,10 @@ const ShortLinks = ({ go }) => {
 							<Link
 								href={item.full_short_link2}
 								target='_blank'
-								data-to='not_found'
-								onClick={(e) => {
+								// data-to='not_found'
+								onClick={() => {
 									openLink(item);
-									go(e);
+									// go(e);
 								}}>
 								{item.full_short_link2}
 							</Link>
