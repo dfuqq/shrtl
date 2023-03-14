@@ -8,7 +8,7 @@ import {
 import { Panel, Div, Cell, Button, Link, Text } from '@vkontakte/vkui';
 import './ShortLinks.css';
 
-const ShortLinks = () => {
+const ShortLinks = ({ go }) => {
 	const [copiedUrl, setCopiedUrl] = useState(null);
 	const links = useSelector(selectLinks);
 
@@ -76,7 +76,11 @@ const ShortLinks = () => {
 							<Link
 								href={item.full_short_link2}
 								target='_blank'
-								onClick={() => openLink(item)}>
+								data-to='not_found'
+								onClick={(e) => {
+									openLink(item);
+									go(e);
+								}}>
 								{item.full_short_link2}
 							</Link>
 						</Cell>

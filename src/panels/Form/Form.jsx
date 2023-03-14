@@ -8,7 +8,7 @@ import { Panel, Div, Button, Group } from '@vkontakte/vkui';
 import ShortLinks from '../ShortLinks/ShortLinks';
 import './Form.css';
 
-const Form = () => {
+const Form = ({ go }) => {
 	// Создаём диспетчер для взаимодействия с redux
 	const dispatch = useDispatch();
 
@@ -77,7 +77,7 @@ const Form = () => {
 					</Group>
 				</Div>
 			</Div>
-			<ShortLinks />
+			<ShortLinks go={go} />
 		</Panel>
 	);
 };

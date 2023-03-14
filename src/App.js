@@ -10,9 +10,14 @@ import {
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
+import NotFound from './panels/NotFound/NotFound';
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('home');
+	const [activePanel, setActivePanel] = useState('not_found');
+
+	const go = (e) => {
+		setActivePanel(e.currentTarget.dataset.to);
+	};
 
 	return (
 		<ConfigProvider appearance='dark'>
@@ -21,7 +26,14 @@ const App = () => {
 					<SplitLayout>
 						<SplitCol>
 							<View activePanel={activePanel}>
-								<Home id='home' />
+								<Home
+									id='home'
+									go={go}
+								/>
+								<NotFound
+									id='not_found'
+									go={go}
+								/>
 							</View>
 						</SplitCol>
 					</SplitLayout>

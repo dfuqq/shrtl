@@ -5,11 +5,11 @@ import { Panel } from '@vkontakte/vkui';
 import Header from './Header';
 import Form from './Form/Form';
 
-const Home = ({ id }) => {
+const Home = ({ id, go }) => {
 	return (
 		<Panel id={id}>
 			<Header />
-			<Form />
+			<Form go={go} />
 		</Panel>
 	);
 };
