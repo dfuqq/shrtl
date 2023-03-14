@@ -6,6 +6,9 @@ import {
 	ConfigProvider,
 	SplitLayout,
 	SplitCol,
+	ModalRoot,
+	ModalPage,
+	ModalPageHeader,
 } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
@@ -14,16 +17,30 @@ import NotFound from './panels/NotFound/NotFound';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
+	const [activeModal, setActiveModal] = useState('settings');
 
 	const go = (e) => {
 		setActivePanel(e.currentTarget.dataset.to);
 	};
 
+	const modal = (
+		<ModalRoot activeModal={activeModal}>
+			<ModalPage
+				id='settings'
+				settlingHeight={50}
+				dynamicContentHeight
+				header={<ModalPageHeader>Settings</ModalPageHeader>}
+				onClose={() => setActiveModal(null)}>
+				Hello
+			</ModalPage>
+		</ModalRoot>
+	);
+
 	return (
 		<ConfigProvider appearance='dark'>
 			<AdaptivityProvider>
 				<AppRoot>
-					<SplitLayout>
+					<SplitLayout modal={modal}>
 						<SplitCol>
 							<View activePanel={activePanel}>
 								<Home
