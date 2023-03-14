@@ -9,11 +9,13 @@ import {
 	ModalRoot,
 	ModalPage,
 	ModalPageHeader,
+	Div,
 } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
 import NotFound from './panels/NotFound/NotFound';
+import ModalPageContent from './panels/ModalPageContent/ModalPageContent';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
@@ -29,9 +31,11 @@ const App = () => {
 				id='settings'
 				settlingHeight={50}
 				dynamicContentHeight
-				header={<ModalPageHeader>Settings</ModalPageHeader>}
+				header={<ModalPageHeader>Настройки</ModalPageHeader>}
 				onClose={() => setActiveModal(null)}>
-				Hello
+				<Div>
+					<ModalPageContent />
+				</Div>
 			</ModalPage>
 		</ModalRoot>
 	);
