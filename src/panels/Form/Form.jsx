@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createShortLink, selectLoading } from '../../store/slice/linkSlice';
 
 import { Panel, Div, Button, Group } from '@vkontakte/vkui';
-import { Icon24Settings } from '@vkontakte/icons';
+import { Icon24ClockOutline } from '@vkontakte/icons';
 
 import ShortLinks from '../ShortLinks/ShortLinks';
 import './Form.css';
@@ -67,7 +67,7 @@ const Form = ({ go, modalControl }) => {
 									justifyContent: 'center',
 									alignItems: 'center',
 								}}>
-								<Icon24Settings
+								<Icon24ClockOutline
 									style={{ padding: 10, cursor: 'pointer' }}
 									onClick={modalControl}
 								/>
