@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createShortLink, selectLoading } from '../../store/slice/linkSlice';
 
 import { Panel, Div, Button, Group } from '@vkontakte/vkui';
+import { Icon24Settings } from '@vkontakte/icons';
 
 import ShortLinks from '../ShortLinks/ShortLinks';
 import './Form.css';
 
-const Form = ({ go }) => {
+const Form = ({ go, modalControl }) => {
 	// Создаём диспетчер для взаимодействия с redux
 	const dispatch = useDispatch();
 
@@ -64,7 +65,12 @@ const Form = ({ go }) => {
 								style={{
 									display: 'flex',
 									justifyContent: 'center',
+									alignItems: 'center',
 								}}>
+								<Icon24Settings
+									style={{ padding: 10, cursor: 'pointer' }}
+									onClick={modalControl}
+								/>
 								<Button
 									size='m'
 									disabled={loading === 'loading'}
