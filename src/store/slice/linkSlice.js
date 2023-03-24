@@ -72,7 +72,7 @@ const linkSlice = createSlice({
 		[increaseCounterOnOpen.fulfilled]: (state, action) => {
 			const { ok, result } = action.payload;
 			if (ok) {
-				state.items[result.itemId].counter++;
+				state.items[result.itemId].clickCounter++;
 				state.loading = 'idle';
 			} else {
 				console.log(result.error);
