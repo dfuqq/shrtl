@@ -10,9 +10,6 @@ import {
 	ModalPage,
 	ModalPageHeader,
 	Div,
-	Button,
-	Panel,
-	Spacing,
 } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
@@ -43,15 +40,7 @@ const App = () => {
 				header={<ModalPageHeader>Дата истечения</ModalPageHeader>}
 				onClose={() => setActiveModal(null)}>
 				<Div>
-					<Panel centered>
-						<ModalPageContent />
-						<Spacing />
-						<Button
-							size='m'
-							mode='overlay_primary'>
-							Установить
-						</Button>
-					</Panel>
+					<ModalPageContent setActiveModal={setActiveModal} />
 				</Div>
 			</ModalPage>
 		</ModalRoot>
