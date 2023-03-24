@@ -41,7 +41,7 @@ const ShortLinks = ({ go }) => {
 						<Cell
 							description={
 								<Text>
-									{item.counter} перехода
+									{item.clickCounter} перехода
 									<br />
 									Действует до: {item.date_created}
 								</Text>

@@ -55,7 +55,7 @@ const linkSlice = createSlice({
 					original_link: result.original_link,
 					full_short_link2: result.full_short_link2,
 					date_created: new Date().toLocaleString().split(',')[0],
-					counter: 0,
+					clickCounter: 0,
 				});
 				state.loading = 'idle';
 			} else {
