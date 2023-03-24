@@ -1,27 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Panel, FormLayout, Calendar, Spacing, Button } from '@vkontakte/vkui';
 
-const ModalPageContent = ({ setActiveModal }) => {
-	const [value, setValue] = useState(() => new Date());
-	const [expirationDate, setExpirationDate] = useState(() => new Date());
-
-	const getExpirationDate = () => {
-		const yyyy = value.getFullYear();
-		let mm = value.getMonth() + 1; // Months start at 0!
-		let dd = value.getDate();
-		if (dd < 10) dd = '0' + dd;
-		if (mm < 10) mm = '0' + mm;
-
-		setExpirationDate(dd + '.' + mm + '.' + yyyy);
-		setActiveModal(null);
-	};
-
+const ModalPageContent = ({
+	setActiveModal,
+	expirationDate,
+	setExpirationDate,
+}) => {
 	return (
 		<Panel centered>
 			<FormLayout>
 				<Calendar
-					value={value}
-					onChange={(value) => setValue(value)}
+					value={expirationDate}
+					onChange={(value) => {
+						setExpirationDate(value);
+						console.log(value);
+					}}
 					disablePast
 					disablePickers
 					showNeighboringMonth
@@ -31,7 +24,7 @@ const ModalPageContent = ({ setActiveModal }) => {
 				<Button
 					size='m'
 					mode='overlay_primary'
-					onClick={getExpirationDate}>
+					onClick={() => setActiveModal(null)}>
 					Установить
 				</Button>
 			</FormLayout>

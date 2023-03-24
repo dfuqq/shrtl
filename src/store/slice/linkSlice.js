@@ -19,7 +19,7 @@ export const increaseCounterOnOpen = createAsyncThunk(
 	'links/increaseCounterOnOpen',
 	async (itemId) => {
 		try {
-			return await { ok: true, result: { itemId: itemId } };
+			return await { ok: true, result: itemId };
 		} catch (error) {
 			return await { ok: false, result: error };
 		}

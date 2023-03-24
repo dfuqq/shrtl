@@ -20,6 +20,7 @@ import ModalPageContent from './panels/ModalPageContent/ModalPageContent';
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
 	const [activeModal, setActiveModal] = useState(null);
+	const [expirationDate, setExpirationDate] = useState(() => new Date());
 
 	const go = (e) => {
 		setActivePanel(e.currentTarget.dataset.to);
@@ -40,7 +41,11 @@ const App = () => {
 				header={<ModalPageHeader>Дата истечения</ModalPageHeader>}
 				onClose={() => setActiveModal(null)}>
 				<Div>
-					<ModalPageContent setActiveModal={setActiveModal} />
+					<ModalPageContent
+						setActiveModal={setActiveModal}
+						expirationDate={expirationDate}
+						setExpirationDate={setExpirationDate}
+					/>
 				</Div>
 			</ModalPage>
 		</ModalRoot>
@@ -57,6 +62,7 @@ const App = () => {
 									id='home'
 									go={go}
 									modalControl={modalControl}
+									expirationDate={expirationDate}
 								/>
 								<NotFound
 									id='not_found'
@@ -70,5 +76,4 @@ const App = () => {
 		</ConfigProvider>
 	);
 };
-
 export default App;
